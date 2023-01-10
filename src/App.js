@@ -1,23 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import Accordion from './components/accordion';
+import ProductGallery from './components/eCommStore';
+import GenericCheckboxList from './helpers/brandSort';
+import CategoryCheckboxList from './helpers/categorySort';
+import FormFill from './components/formFill';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      {/* A static component that displays static text */}
+      <h2>Potential Facts</h2>
+      <div id="accordionSection">
+        <Accordion />
+      </div>
+      <h2>Shop From Our Store</h2>
+      <div id="product-store">
+        <aside>
+          <h3>Filters</h3>
+          <fieldset>
+            <legend>Brands</legend>
+              <GenericCheckboxList />
+          </fieldset>
+          <h4>Price</h4>
+          <fieldset>
+            <legend>Categories</legend>
+              <CategoryCheckboxList />
+          </fieldset>
+        </aside>
+        <div id="product-gallery">
+          <ProductGallery />
+        </div>
+      </div>
+
+      <h2>Contact Us</h2>
+      <div id="form-fill">
+        <FormFill />
+      </div>
     </div>
   );
 }

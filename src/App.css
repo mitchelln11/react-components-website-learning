@@ -2,37 +2,101 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#accordionSection {
+  padding: 2%;
+  margin: 0% 10%;
+  display: block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.accordion {
+  cursor: pointer;
+  transition: 0.4s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.accordion-header-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.active-indicator {
+  background-color: #18758f;
+  width: 15px;
+  flex: 0.2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.accordion-header {
+  background-color:#61dafb;
+  margin:0;
+  border-bottom: 1px solid #9a9898;
+  width: 100%;
+  flex: 20;
+}
+
+.accordion-header>h3 {
+  padding: 10px 0;
+  float: left;
+  margin: 0 0 0 2%;
+}
+
+.accordion-arrow {
+  padding: 10px 0;
+  float: right;
+  text-align: center;
+  background-color: #588794;
+  flex: 1;
+  border-bottom: 1px solid #176175;
+}
+
+.accordion:last-of-type p {
+  border-bottom: 1px solid #000000;
+  padding-bottom: 10px;
+}
+
+.accordion-panel {
+  margin: 0;
+  box-shadow: 1px 2px 4px inset;
+  padding: 30px 15px;
+}
+
+#product-store {
+  width: 100%;
+  padding: 20px 0;
+  display:flex;
+}
+
+#product-store>aside {
+  float:left;
+  min-width: 10%;
+  text-align: left;
+  padding: 0 15px 10px;
+  background-color: #61dafb;
+  flex: inherit;
+}
+
+#product-gallery {
+  display: flex;
+  padding: 0 20px 10px;
+  background-color: #588794;
+  flex: auto;
+}
+
+.product-tab {
+  flex:1;
+}
+
+.product-tab>h3 {
+  margin-bottom: 5px;
+}
+
+.product-tab>h4 {
+  margin: 5px 0;
+}
+
+.product-tab>img {
+  max-width: 150px;
+  width:auto;
+  padding: 5px 15px;
+}
+
+#form-fill {
+  padding: 25px 0;
 }
