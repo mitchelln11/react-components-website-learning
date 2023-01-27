@@ -1,8 +1,8 @@
 import './App.css';
 import Accordion from './components/accordion';
 import ProductGallery from './components/eCommStore';
-import GenericCheckboxList from './helpers/brandSort';
-import CategoryCheckboxList from './helpers/categorySort';
+import GenericCheckboxList from './helpers/brandChecklist';
+import CategoryCheckboxList from './helpers/categoryChecklist';
 import FormFill from './components/formFill';
 
 function App() {
