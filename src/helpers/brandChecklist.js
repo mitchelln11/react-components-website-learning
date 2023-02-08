@@ -1,5 +1,5 @@
 import { productList } from '../dataSamples/eCommProducts.js';
-import { GenerateCheckboxList } from '../components/checkboxList';
+import { GenerateCheckboxList } from '../components/checkBoxEcommParent.js';
 
 // Returns array of brand names without duplicates
 const cleanBrands = () => {
@@ -8,7 +8,6 @@ const cleanBrands = () => {
 
 // Display all options
 export default function GenericCheckboxList() {
-    //Change cleanBrands from type "function" to type "object so you can map through"
     let updatedList = cleanBrands();
     return (
         updatedList.map((item, index) => {

@@ -1,6 +1,6 @@
 import { productList } from '../dataSamples/eCommProducts';
 import { categorySort } from './duplicateListItemRemoval'
-import { GenerateCheckboxList } from '../components/checkboxList';
+import { GenerateCheckboxList } from '../components/checkBoxEcommParent';
 
 let categories = productList.map(product => product.mainCategory);
 

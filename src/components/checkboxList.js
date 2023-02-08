@@ -1,22 +1,18 @@
-import { useState } from 'react';
+import { productList } from '../dataSamples/eCommProducts.js';
+import { GenerateCheckboxList } from './checkBoxEcommParent.js';
 
-export function GenerateCheckboxList({checkboxValue, index}) {
-    const [isChecked, setIsChecked] = useState(false);
+// Returns array of brand names without duplicates
+const cleanBrands = () => {
+    return [...new Set(productList.map(brand => brand.brand))];
+}
 
-    function handleCheckbox(e) {
-        setIsChecked(e.target.checked)
-    }
-
+// Display all options
+export default function GenericCheckboxList() {
+    //Change cleanBrands from type "function" to type "object so you can map through"
+    let updatedList = cleanBrands();
     return (
-        <div className="checkbox-item" key={index}>
-            <input 
-                type="checkbox" 
-                id={checkboxValue} 
-                name={checkboxValue} 
-                checked={isChecked} 
-                onChange={handleCheckbox}
-            />
-            <label htmlFor={checkboxValue}>{checkboxValue}</label>
-        </div>
+        updatedList.map((item, index) => {
+            return <GenerateCheckboxList key={index} checkboxValue={item} />
+        })
     )
 }
