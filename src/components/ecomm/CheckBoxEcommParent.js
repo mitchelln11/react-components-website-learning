@@ -1,4 +1,10 @@
 import { useState  } from "react";
+import { productList } from '../../dataSamples/eCommProducts';
+
+// Returns array of brand names without duplicates
+function dedupeCheckboxOptions(itemList, item) {
+    return [...new Set(itemList.map(product => product[item]))]
+}
 
 export function GenerateCheckboxList({checkboxValue, index}) {
     const [isChecked, setIsChecked] = useState(false);
@@ -18,6 +24,17 @@ export function GenerateCheckboxList({checkboxValue, index}) {
             />
             <label htmlFor={checkboxValue}>{checkboxValue}</label>
         </div>
+    )
+}
+
+// Display all options
+export function GenericCheckboxList() {
+    // console.log(productList);
+    let dedupedList = dedupeCheckboxOptions(productList, "brand");
+    return (
+        dedupedList.map((item, index) => {
+            return <GenerateCheckboxList key={index} checkboxValue={item} />
+        })
     )
 }
 
