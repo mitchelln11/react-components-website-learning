@@ -1,12 +1,19 @@
 import { useState  } from "react";
 import { productList } from '../../dataSamples/eCommProducts';
 
-// Returns array of brand names without duplicates
-function dedupeCheckboxOptions(itemList, item) {
-    return [...new Set(itemList.map(product => product[item]))]
+// return individual values without duplicates
+export const eCommValues = {
+    id: [...new Set(productList.map(product => product.id))],
+    name: [...new Set(productList.map(product => product.productName))],
+    price: [...new Set(productList.map(product => product.price))],
+    brand: [...new Set(productList.map(product => product.brand))],
+    mainCategory: [...new Set(productList.map(product => product.mainCategory))],
+    labels: [...new Set(productList.map(product => product.labels))],
+    color: [...new Set(productList.map(product => product.color))],
+    image: [...new Set(productList.map(product => product.image))]
 }
 
-export function GenerateCheckboxList({checkboxValue, index}) {
+export function GenerateCheckboxList({checkboxValue, index, itemVal}) {
     const [isChecked, setIsChecked] = useState(false);
 
     function handleCheckbox(e) {
@@ -21,22 +28,14 @@ export function GenerateCheckboxList({checkboxValue, index}) {
                 name={checkboxValue} 
                 checked={isChecked} 
                 onChange={handleCheckbox}
+                data-product-element={itemVal}
             />
             <label htmlFor={checkboxValue}>{checkboxValue}</label>
         </div>
     )
 }
 
-// Display all options
-export function GenericCheckboxList() {
-    // console.log(productList);
-    let dedupedList = dedupeCheckboxOptions(productList, "brand");
-    return (
-        dedupedList.map((item, index) => {
-            return <GenerateCheckboxList key={index} checkboxValue={item} />
-        })
-    )
-}
+// The actual UI logic on CheckboxSection.js
 
 export function DisplayProducts({id, productName, price, image}) {
     return (
