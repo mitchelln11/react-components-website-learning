@@ -1,7 +1,6 @@
 import './App.css';
 import Accordion from './components/accordion';
-// import { GenericCheckboxList } from './components/ecomm/CheckBoxEcommParent';
-import GenericCheckboxList from './components/ecomm/CheckboxSection';
+import { StoreSection } from './components/ecomm/CheckBoxEcommParent';
 import FormFill from './components/formFill';
 
 function App() {
@@ -14,9 +13,23 @@ function App() {
         <Accordion />
       </div>
       <h2>Shop From Our Store</h2>
-      {/* Add parent eComm checkbox filters here */}
-      <GenericCheckboxList prodVal="brand" />
-      <GenericCheckboxList prodVal="mainCategory" />
+      <StoreSection />
+      {/* <div id="product-store">
+        <aside>
+          <h3>Filters</h3>
+          <fieldset>
+            <legend>Brands</legend>
+            <GenericCheckboxList prodVal="brand" />
+          </fieldset>
+          
+          <fieldset>
+            <legend>Categories</legend>
+            <GenericCheckboxList prodVal="mainCategory" />
+          </fieldset>
+        </aside>
+        <div id="product-gallery">
+        </div>
+      </div> */}
       <h2>Contact Us</h2>
       <div id="form-fill">
         <FormFill />
