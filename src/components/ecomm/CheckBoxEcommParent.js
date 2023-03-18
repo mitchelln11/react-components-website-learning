@@ -17,22 +17,63 @@ export const eCommValues = {
 // https://beta.reactjs.org/learn/sharing-state-between-components
 // !!!!!!Need to Lift State Up!!!!!!
 // May need to tear down and start parent component from hard coded vars with lifting state up
+
 export function StoreSection() {
     const [isChecked, setIsChecked] = useState(false);
 
-    // findCheckboxValue();
+    // Outer shell to the Checkbox fields
+    function GenerateFieldSet({ChecklistTitle, children}){
+        return (
+        <fieldset>
+            <legend>{ChecklistTitle}</legend>
+                {children}
+        </fieldset>
+        )
+    }
 
+    // Generate individual checkbox item input
+    function GenerateCheckListItem({brand, isChecked, onChange}) {
+        return (
+            <div className="checkbox-item">
+                <input 
+                    id={brand}
+                    type="checkbox"
+                    name={brand}
+                    checked={isChecked}
+                    onChange={onChange}
+                />
+                <label htmlFor={brand}>{brand}</label>
+            </div>
+        )
+    }
+
+    
+    // Display all options without duplicates
+    function DisplayAllChecklistItems({prodVal}) {
+        return (
+            eCommValues[prodVal].map((item, index) => {
+                return <GenerateCheckListItem key={index} id={index} brand={item} isChecked={isChecked} onChange={e => setIsChecked(e.target.checked)} />
+        })
+    )}
+
+    // All the UI items
     return (
         <div id="product-store">
             <aside>
             <h3>Filters</h3>
-                <GenerateCheckList isChecked={isChecked} onChange={e => setIsChecked(e.target.checked)} />
+            <GenerateFieldSet ChecklistTitle="Brands">
+                <DisplayAllChecklistItems prodVal="brand" />
+            </GenerateFieldSet>
+            <GenerateFieldSet ChecklistTitle="Categories">
+                <DisplayAllChecklistItems prodVal="mainCategory" />
+            </GenerateFieldSet>
+                {/* <GenerateCheckListItem isChecked={isChecked} onChange={e => setIsChecked(e.target.checked)} /> */}
                 {/* <GenericCheckboxList title="Brands" prodVal="brand" /> */}
                 {/* <GenericCheckboxList title="Categories" prodVal="mainCategory" /> */}
             </aside>
             <div id="product-gallery">
                 {/* {if findCheckboxValue} */}
-                <DisplayProducts prodVal="Merrell" />
+                <DisplayProducts prodVal="Fayet" />
             </div>
         </div>
     )
@@ -43,23 +84,9 @@ export function StoreSection() {
 //     console.log(boxValue)
 // }
 
-function GenerateCheckList({isChecked, onChange}) {
-    return (
-        <fieldset>
-            <legend>Brands</legend>
-            <div className="checkbox-item">
-                <input 
-                    id="Merrell"
-                    type="checkbox"
-                    name="Merrell"
-                    checked={isChecked}
-                    onChange={onChange}
-                />
-                <label htmlFor="Merrell">Merrell</label>
-            </div>
-        </fieldset>
-    )
-}
+
+
+
 
 // export function GenerateCheckboxList({title, isChecked, checkboxValue, index, itemVal}) {
 //     const setIsChecked = useState(false);
@@ -125,13 +152,12 @@ function GenerateCheckList({isChecked, onChange}) {
 // The actual UI logic on CheckboxSection.js
 export function DisplayProducts({prodVal}) {
 
-    function findProduct() {
-        console.log(productList.filter(item => item.brand === prodVal));
-    }
+    // This works, just commenting for now
+    // function findProduct() {
+    //     console.log(productList.filter(item => item.brand === prodVal));
+    // }
 
-    findProduct({prodVal})
-    // console.log(productList.filter(item => item.brand === prodVal))
-    // findProduct("Merrell");
+    // findProduct({prodVal})
     
 
     return (
