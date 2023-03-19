@@ -16,43 +16,46 @@ export const eCommValues = {
 // Try referencing this article on sharing component states
 // https://beta.reactjs.org/learn/sharing-state-between-components
 // !!!!!!Need to Lift State Up!!!!!!
-// May need to tear down and start parent component from hard coded vars with lifting state up
 
-export function StoreSection() {
+ // Outer shell to the Checkbox fields
+ function GenerateFieldSet({ChecklistTitle, children}){
+    return (
+    <fieldset>
+        <legend>{ChecklistTitle}</legend>
+            {children}
+    </fieldset>
+    )
+}
+
+// Generate individual checkbox item input
+function GenerateCheckListItem({brand}) {
     const [isChecked, setIsChecked] = useState(false);
 
-    // Outer shell to the Checkbox fields
-    function GenerateFieldSet({ChecklistTitle, children}){
-        return (
-        <fieldset>
-            <legend>{ChecklistTitle}</legend>
-                {children}
-        </fieldset>
-        )
+    function handleOnChange() {
+        setIsChecked(!isChecked)
     }
 
-    // Generate individual checkbox item input
-    function GenerateCheckListItem({brand, isChecked, onChange}) {
-        return (
-            <div className="checkbox-item">
-                <input 
-                    id={brand}
-                    type="checkbox"
-                    name={brand}
-                    checked={isChecked}
-                    onChange={onChange}
-                />
-                <label htmlFor={brand}>{brand}</label>
-            </div>
-        )
-    }
+    return (
+        <div className="checkbox-item">
+            <input 
+                id={brand}
+                type="checkbox"
+                name={brand}
+                checked={isChecked}
+                onChange={handleOnChange}
+            />
+            <label htmlFor={brand}>{brand}</label>
+        </div>
+    )
+}
 
-    
+export function StoreSection() {
+
     // Display all options without duplicates
     function DisplayAllChecklistItems({prodVal}) {
         return (
             eCommValues[prodVal].map((item, index) => {
-                return <GenerateCheckListItem key={index} id={index} brand={item} isChecked={isChecked} onChange={e => setIsChecked(e.target.checked)} />
+                return <GenerateCheckListItem key={index} brand={item} />
         })
     )}
 
@@ -67,12 +70,8 @@ export function StoreSection() {
             <GenerateFieldSet ChecklistTitle="Categories">
                 <DisplayAllChecklistItems prodVal="mainCategory" />
             </GenerateFieldSet>
-                {/* <GenerateCheckListItem isChecked={isChecked} onChange={e => setIsChecked(e.target.checked)} /> */}
-                {/* <GenericCheckboxList title="Brands" prodVal="brand" /> */}
-                {/* <GenericCheckboxList title="Categories" prodVal="mainCategory" /> */}
             </aside>
             <div id="product-gallery">
-                {/* {if findCheckboxValue} */}
                 <DisplayProducts prodVal="Fayet" />
             </div>
         </div>
