@@ -1,5 +1,6 @@
 import { useState  } from "react";
 import { productList } from '../../dataSamples/eCommProducts';
+import placeholderImg from '../../images/product-placeholder.jpg';
 
 // return individual values without duplicates
 export const eCommValues = {
@@ -16,9 +17,13 @@ export const eCommValues = {
 // Try referencing this article on sharing component states
 // https://beta.reactjs.org/learn/sharing-state-between-components
 // !!!!!!Need to Lift State Up!!!!!!
+// function findCheckbox(desiredItem) {
+//     let checkboxFound = document.getElementById(desiredItem)
+//     console.log(checkboxFound)
+// }
 
- // Outer shell to the Checkbox fields
- function GenerateFieldSet({ChecklistTitle, children}){
+// Outer shell to the Checkbox fields
+function GenerateFieldSet({ChecklistTitle, children}){
     return (
     <fieldset>
         <legend>{ChecklistTitle}</legend>
@@ -31,9 +36,11 @@ export const eCommValues = {
 function GenerateCheckListItem({brand}) {
     const [isChecked, setIsChecked] = useState(false);
 
-    function handleOnChange() {
-        setIsChecked(!isChecked)
+    function handleOnChange(e) {
+        setIsChecked(e.target.checked)
     }
+
+    // findCheckbox("Merrell")
 
     return (
         <div className="checkbox-item">
@@ -41,6 +48,7 @@ function GenerateCheckListItem({brand}) {
                 id={brand}
                 type="checkbox"
                 name={brand}
+                value={brand}
                 checked={isChecked}
                 onChange={handleOnChange}
             />
@@ -49,8 +57,9 @@ function GenerateCheckListItem({brand}) {
     )
 }
 
-export function StoreSection() {
 
+
+export function StoreSection() {
     // Display all options without duplicates
     function DisplayAllChecklistItems({prodVal}) {
         return (
@@ -58,6 +67,19 @@ export function StoreSection() {
                 return <GenerateCheckListItem key={index} brand={item} />
         })
     )}
+
+    // function ProductGallery() {
+    //     console.log("Is this registering?")
+    //     return(
+    //         productList.map((product) => {
+    //             return (
+    //                 <h3>{product.brand}</h3>
+    //                 // <DisplaySingleProduct key={product.id} productName={product.productName} price={product.price} />
+    //             )
+    //         })
+    //     )
+    // }
+
 
     // All the UI items
     return (
@@ -72,75 +94,11 @@ export function StoreSection() {
             </GenerateFieldSet>
             </aside>
             <div id="product-gallery">
-                <DisplayProducts prodVal="Fayet" />
+                <ProductGallery />
             </div>
         </div>
     )
 }
-
-// function findCheckboxValue() {
-//     const boxValue = document.getElementById('Merrell');
-//     console.log(boxValue)
-// }
-
-
-
-
-
-// export function GenerateCheckboxList({title, isChecked, checkboxValue, index, itemVal}) {
-//     const setIsChecked = useState(false);
-
-//     function handleCheckbox() {
-//         setIsChecked(!isChecked)
-//     }
-
-//     return (
-//         <fieldset>
-//             <legend>{title}</legend>
-//             <div className="checkbox-item" key={index}>
-//                 <input 
-//                     type="checkbox" 
-//                     id={checkboxValue} 
-//                     name={checkboxValue} 
-//                     checked={isChecked} 
-//                     onChange={handleCheckbox}
-//                     data-product-element={itemVal}
-//                 />
-//                 <label htmlFor={checkboxValue}>{checkboxValue}</label>
-//             </div>
-//         </fieldset>
-//     )
-// }
-
-// export function GenerateCheckboxList({checkboxValue, index, itemVal}) {
-//     const [isChecked, setIsChecked] = useState(false);
-
-//     function handleCheckbox(e) {
-//         setIsChecked(e.target.checked)
-//     }
-
-//     return (
-//         <div className="checkbox-item" key={index}>
-//             <input 
-//                 type="checkbox" 
-//                 id={checkboxValue} 
-//                 name={checkboxValue} 
-//                 checked={isChecked} 
-//                 onChange={handleCheckbox}
-//                 data-product-element={itemVal}
-//             />
-//             <label htmlFor={checkboxValue}>{checkboxValue}</label>
-//         </div>
-//     )
-// }
-
-// Display all options without duplicates
-// export function GenericCheckboxList({title, prodVal}) {
-//     return (
-//         eCommValues[prodVal].map((item, index) => {
-//             return <GenerateCheckboxList title={title} isChecked="false" checkboxValue={item} index={index} itemVal={prodVal} />
-//     })
-// )}
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -148,8 +106,18 @@ export function StoreSection() {
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-// The actual UI logic on CheckboxSection.js
-export function DisplayProducts({prodVal}) {
+function DisplaySingleProduct({id, productName, price, image}) {
+    return (
+        <div id={`product${id}`} className="product-tab" key={`product${id}`}>
+            <h3>{productName}</h3>
+            <h4>${price.toFixed(2)}</h4>
+            <img src={image} alt={productName + id} />
+        </div>
+    )
+}
+
+// The actual UI logic
+export function ProductGallery() {
 
     // This works, just commenting for now
     // function findProduct() {
@@ -157,15 +125,14 @@ export function DisplayProducts({prodVal}) {
     // }
 
     // findProduct({prodVal})
-    
 
+    // This should be the else statement for when nothing is checked
     return (
-        <div className="product-tab">
-            <h3>{prodVal}</h3>
-            {/* <h4>${productList[0].price.toFixed(2)}</h4> */}
-            <h4>${productList.find(product => product.brand === {prodVal})}</h4>
-            <img src={productList[0].image} alt={prodVal} />
-        </div>
+        productList.map((product) => {
+            return (
+                <DisplaySingleProduct key={product.id} productName={product.productName} price={product.price} image={product.image || placeholderImg} id={product.id} />
+            )
+        })
     )
 }
 
