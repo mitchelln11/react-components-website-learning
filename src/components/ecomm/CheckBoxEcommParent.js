@@ -17,10 +17,13 @@ export const eCommValues = {
 // Try referencing this article on sharing component states
 // https://beta.reactjs.org/learn/sharing-state-between-components
 // !!!!!!Need to Lift State Up!!!!!!
-// function findCheckbox(desiredItem) {
-//     let checkboxFound = document.getElementById(desiredItem)
-//     console.log(checkboxFound)
-// }
+
+// Properly returning checked boxes and condensing to the id alone
+function findCheckedCheckboxes() {
+    let checkboxesFound = Array.from(document.querySelectorAll("input:checked")).map(check => check.id)
+    // console.log(checkboxesFound);
+    return checkboxesFound;
+}
 
 // Outer shell to the Checkbox fields
 function GenerateFieldSet({ChecklistTitle, children}){
@@ -37,10 +40,9 @@ function GenerateCheckListItem({brand}) {
     const [isChecked, setIsChecked] = useState(false);
 
     function handleOnChange(e) {
-        setIsChecked(e.target.checked)
+        setIsChecked(e.target.checked);
+        retrieveCheckedProducts();
     }
-
-    // findCheckbox("Merrell")
 
     return (
         <div className="checkbox-item">
@@ -106,7 +108,16 @@ export function StoreSection() {
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
+// Properly checking to see if the product list contains any of the checkbox array values
+function retrieveCheckedProducts() {
+    const checkedBoxes = findCheckedCheckboxes();
+    const found = productList.filter(product => checkedBoxes.includes(product.brand || product.mainCategory))
+    console.log(found);
+}
+
+
 function DisplaySingleProduct({id, productName, price, image}) {
+    // retrieveCheckedProducts();
     return (
         <div id={`product${id}`} className="product-tab" key={`product${id}`}>
             <h3>{productName}</h3>
