@@ -18,9 +18,12 @@ export const eCommValues = {
 // https://beta.reactjs.org/learn/sharing-state-between-components
 // !!!!!!Need to Lift State Up!!!!!!
 
+let checkedBoxes,
+    checkboxesFound
+
 // Properly returning checked boxes and condensing to the id alone
 function findCheckedCheckboxes() {
-    let checkboxesFound = Array.from(document.querySelectorAll("input:checked")).map(check => check.id)
+    checkboxesFound = Array.from(document.querySelectorAll("input:checked")).map(check => check.id)
     // console.log(checkboxesFound);
     return checkboxesFound;
 }
@@ -110,14 +113,14 @@ export function StoreSection() {
 
 // Properly checking to see if the product list contains any of the checkbox array values
 function retrieveCheckedProducts() {
-    const checkedBoxes = findCheckedCheckboxes();
-    const found = productList.filter(product => checkedBoxes.includes(product.brand || product.mainCategory))
-    console.log(found);
+    checkedBoxes = findCheckedCheckboxes();
+    let productsChecked = productList.filter(product => checkedBoxes.includes(product.brand || product.mainCategory))
+    console.log(productsChecked);
+    return productsChecked
 }
 
 
 function DisplaySingleProduct({id, productName, price, image}) {
-    // retrieveCheckedProducts();
     return (
         <div id={`product${id}`} className="product-tab" key={`product${id}`}>
             <h3>{productName}</h3>
@@ -134,16 +137,29 @@ export function ProductGallery() {
     // function findProduct() {
     //     console.log(productList.filter(item => item.brand === prodVal));
     // }
+    let checkedItems = retrieveCheckedProducts();
 
     // findProduct({prodVal})
-
+    // Products not changing with checkbox check, do I need a product state?
+    if (0 > 1) {
+        return (
+            checkedItems.map((product) => {
+                return (
+                    <DisplaySingleProduct key={product.id} productName={product.productName} price={product.price} image={product.image || placeholderImg} id={product.id} />
+                )
+            })
+        )
+    } else {
     // This should be the else statement for when nothing is checked
-    return (
-        productList.map((product) => {
-            return (
-                <DisplaySingleProduct key={product.id} productName={product.productName} price={product.price} image={product.image || placeholderImg} id={product.id} />
-            )
-        })
-    )
+        return (
+            productList.map((product) => {
+                return (
+                    <DisplaySingleProduct key={product.id} productName={product.productName} price={product.price} image={product.image || placeholderImg} id={product.id} />
+                )
+            })
+        )
+    }
+
+    
 }
 
