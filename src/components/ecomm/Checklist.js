@@ -1,15 +1,18 @@
-import { useState  } from "react";
 import { eCommValues } from './Products'
+// import { productList } from '../../dataSamples/eCommProducts';
+
+let checkboxesFound;
+
+// Properly returning checked boxes and condensing to the id alone
+export function findCheckedCheckboxes() {
+    checkboxesFound = Array.from(document.querySelectorAll("input:checked")).map(check => check.id)
+    console.log(checkboxesFound);
+    return checkboxesFound;
+}
 
 // Generate individual checkbox item input
-function GenerateCheckListItem({brand}) {
-    const [isChecked, setIsChecked] = useState(false);
-
-    function handleOnChange(e) {
-        setIsChecked(e.target.checked);
-        // retrieveCheckedProducts();
-    }
-
+function GenerateCheckListItem({brand, isChecked, onChange}) {
+    
     return (
         <div className="checkbox-item">
             <input 
@@ -18,7 +21,7 @@ function GenerateCheckListItem({brand}) {
                 name={brand}
                 value={brand}
                 checked={isChecked}
-                onChange={handleOnChange}
+                onChange={onChange}
             />
             <label htmlFor={brand}>{brand}</label>
         </div>
@@ -26,9 +29,9 @@ function GenerateCheckListItem({brand}) {
 }
 
 // Display all options without duplicates
-export function DisplayAllChecklistItems({prodVal}) {
+export function DisplayAllChecklistItems({prodVal, isChecked, onChange}) {
     return (
         eCommValues[prodVal].map((item, index) => {
-            return <GenerateCheckListItem key={index} brand={item} />
+            return <GenerateCheckListItem key={index} brand={item} checked={isChecked} onChange={onChange} />
     })
 )}
