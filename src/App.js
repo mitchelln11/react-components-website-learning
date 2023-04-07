@@ -1,8 +1,6 @@
 import './App.css';
 import Accordion from './components/accordion';
-import ProductGallery from './components/eCommStore';
-import GenericCheckboxList from './helpers/brandChecklist';
-import CategoryCheckboxList from './helpers/categoryChecklist';
+import { StoreSection } from './components/ecomm/eCommStore';
 import FormFill from './components/formFill';
 
 function App() {
@@ -15,24 +13,7 @@ function App() {
         <Accordion />
       </div>
       <h2>Shop From Our Store</h2>
-      <div id="product-store">
-        <aside>
-          <h3>Filters</h3>
-          <fieldset>
-            <legend>Brands</legend>
-              <GenericCheckboxList />
-          </fieldset>
-          <h4>Price</h4>
-          <fieldset>
-            <legend>Categories</legend>
-              <CategoryCheckboxList />
-          </fieldset>
-        </aside>
-        <div id="product-gallery">
-          <ProductGallery />
-        </div>
-      </div>
-
+      <StoreSection />
       <h2>Contact Us</h2>
       <div id="form-fill">
         <FormFill />
