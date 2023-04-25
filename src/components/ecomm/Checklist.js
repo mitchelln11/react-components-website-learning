@@ -1,11 +1,20 @@
-import { eCommValues } from './Products'
-// import { productList } from '../../dataSamples/eCommProducts';
+import { productList } from '../../dataSamples/eCommProducts';
 
-let checkboxesFound;
+// return individual values without duplicates
+export const eCommValues = {
+    id: [...new Set(productList.map(product => product.id))],
+    name: [...new Set(productList.map(product => product.productName))],
+    price: [...new Set(productList.map(product => product.price))],
+    brand: [...new Set(productList.map(product => product.brand))],
+    mainCategory: [...new Set(productList.map(product => product.mainCategory))],
+    labels: [...new Set(productList.map(product => product.labels))],
+    color: [...new Set(productList.map(product => product.color))],
+    image: [...new Set(productList.map(product => product.image))]
+}
 
 // Properly returning checked boxes and condensing to the id alone
 export function findCheckedCheckboxes() {
-    checkboxesFound = Array.from(document.querySelectorAll("input:checked")).map(check => check.id)
+    let checkboxesFound = Array.from(document.querySelectorAll("input:checked")).map(check => check.id)
     console.log(checkboxesFound);
     return checkboxesFound;
 }
