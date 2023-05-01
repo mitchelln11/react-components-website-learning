@@ -1,7 +1,7 @@
 export let productList = [
     {
         id: 0,
-        productName: "Men's Merrel Hiking Boots",
+        productName: "Men's Merrell Hiking Boots",
         price: 65.00,
         brand: "Merrell",
         mainCategory: "Footwear",
@@ -17,7 +17,7 @@ export let productList = [
     },
     {
         id: 1,
-        productName: "Women's Merrel Hiking Boots",
+        productName: "Women's Merrell Hiking Boots",
         price: 65.00,
         brand: "Merrell",
         mainCategory: "Footwear",
