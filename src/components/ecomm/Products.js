@@ -12,19 +12,17 @@ function DisplaySingleProduct({id, productName, price, image}) {
 }
 
 // The actual UI logic
-export function ProductGallery({checkedArray}) {
-
-    // Only working with a single checkbox. Flat out doesn't work, no errors to help
-    function filteredProducts() {
-        if(checkedArray.length > 0) {
-            return productList.filter(product => product.brand.includes(checkedArray))
+export function ProductGallery({checkedCount}) {
+    const filteredProducts = () =>  {
+        if(checkedCount.length > 0) {
+            let newProductList = productList.filter(product => Object.values(product).some(prod => checkedCount.includes(prod)));
+            return newProductList
         } else {
             return productList;
         }
     }
 
     let updatedProdList = filteredProducts();
-    console.log(updatedProdList);
     return (
         updatedProdList.map(product => {
             return (
