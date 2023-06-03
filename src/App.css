@@ -100,3 +100,12 @@
 #form-fill {
   padding: 25px 0;
 }
+
+#error-page {
+  text-align: center;
+  padding: 20vh 5vw;
+}
+
+#error-page>p>i {
+  color: red;
+}
