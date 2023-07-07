@@ -11,19 +11,6 @@ import Product from './components/ecomm/productDetails';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//     errorElement: <ErrorPage />
-//   },
-//   {
-//     path: "singleProduct/:productId",
-//     element: <Products />,
-//     errorElement: <ErrorPage />
-//   }
-// ]);
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
@@ -32,13 +19,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Routes>
   </BrowserRouter>
 )
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <React.StrictMode>
-//     <RouterProvider router={router} />
-//   </React.StrictMode>
-// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
