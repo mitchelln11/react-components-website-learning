@@ -1,33 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  createBrowserRouter,
-  RouterProvider,
+  BrowserRouter,
+  Routes,
+  Route,
 } from "react-router-dom";
 import './index.css';
 import ErrorPage from "./pages/error-page";
-import Products from './pages/products';
+import Product from './components/ecomm/productDetails';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "products/",
-    element: <Products />
-  }
-]);
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     errorElement: <ErrorPage />
+//   },
+//   {
+//     path: "singleProduct/:productId",
+//     element: <Products />,
+//     errorElement: <ErrorPage />
+//   }
+// ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} errorElement={<ErrorPage />} />
+      <Route path="/product/:id" element={<Product />} errorElement={<ErrorPage />} />
+    </Routes>
+  </BrowserRouter>
+)
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <RouterProvider router={router} />
+//   </React.StrictMode>
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

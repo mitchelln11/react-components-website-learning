@@ -1,13 +1,16 @@
+import  { Link } from "react-router-dom";
 import placeholderImg from '../../images/product-placeholder.jpg';
 import { productList } from '../../dataSamples/eCommProducts';
 
 function DisplaySingleProduct({id, productName, price, image}) {
     return (
-        <div id={`product${id}`} className="product-tab" key={`product${id}`}>
-            <h3>{productName}</h3>
-            <h4>${parseFloat(price).toFixed(2)}</h4>
-            <img src={image} alt={productName + id} />
-        </div>
+        <Link to={`product/${id}`}>
+            <div id={`product${id}`} className="product-tab" key={`product${id}`}>
+                <h3>{productName}</h3>
+                <h4>${parseFloat(price).toFixed(2)}</h4>
+                <img src={image} alt={productName + id} />
+            </div>
+        </Link>
     )
 }
 
