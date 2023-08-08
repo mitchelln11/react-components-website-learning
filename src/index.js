@@ -10,7 +10,6 @@ import ErrorPage from "./pages/error-page";
 import Product from './components/ecomm/productDetails';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>

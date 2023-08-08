@@ -62,7 +62,6 @@ export let productList = [
             "purifier",
             "water",
             "outdoors"
-        ],
-        colors: "clear"
+        ]
     },
 ]

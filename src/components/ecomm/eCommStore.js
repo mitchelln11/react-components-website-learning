@@ -30,7 +30,7 @@ const reducer = (state, action) => {
                 checkedCount: [...state.checkedCount].filter((count) => count !== action.payload),
             };
         default:
-            throw new Error("What the fudge u trying to do?");
+            throw new Error("What are you trying to do?");
     }
 }
 
