@@ -161,6 +161,10 @@ ul.product-tags li {
   padding: 10px;
 }
 
+.centered-text {
+  text-align: center;
+}
+
 #error-page {
   text-align: center;
   padding: 20vh 5vw;

@@ -50,13 +50,13 @@ export function StoreSection() {
     return (
         <div id="product-store">
             <aside>
-            <h3>Filters</h3>
-            <GenerateFieldSet ChecklistTitle="Brands">
-                <DisplayAllChecklistItems prodVal="brand" isChecked={state.isChecked} onChange={handleOnChange} />
-            </GenerateFieldSet>
-            <GenerateFieldSet ChecklistTitle="Categories">
-                <DisplayAllChecklistItems prodVal="mainCategory" isChecked={state.isChecked} onChange={handleOnChange} />
-            </GenerateFieldSet>
+                <h3>Filters</h3>
+                <GenerateFieldSet ChecklistTitle="Brands">
+                    <DisplayAllChecklistItems prodVal="brand" isChecked={state.isChecked} onChange={handleOnChange} />
+                </GenerateFieldSet>
+                <GenerateFieldSet ChecklistTitle="Categories">
+                    <DisplayAllChecklistItems prodVal="mainCategory" isChecked={state.isChecked} onChange={handleOnChange} />
+                </GenerateFieldSet>
             </aside>
             <div id="product-gallery">
                 <ProductGallery checkedCount={state.checkedCount} />
