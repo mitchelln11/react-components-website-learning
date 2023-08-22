@@ -1,4 +1,3 @@
-// import { productList } from "../../dataSamples/eCommProducts";
 import { eCommValues } from "../ecomm/Checklist";
 
 export function checkProdId(productParamId) {
