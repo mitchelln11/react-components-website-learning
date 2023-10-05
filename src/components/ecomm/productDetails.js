@@ -31,7 +31,15 @@ function ExistingProducts() {
                 }
                 <div className="additional-info"> 
                     {
+                        /* If price exists  */
                         productList[id].price &&
+                        /* If price AND sales price exist  */
+                        productList[id].price && productList[id].sale ?
+                        <div className='price-container'>
+                            <h2 className='regular-price'>${parseFloat(productList[id].price).toFixed(2)}</h2>
+                            <h2 className='italic-text sale-price'>SALE: ${parseFloat(productList[id].sale).toFixed(2)}</h2>
+                        </div>
+                        :
                         <div>
                             <h2>${parseFloat(productList[id].price).toFixed(2)}</h2>
                         </div>

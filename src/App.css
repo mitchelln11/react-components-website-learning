@@ -161,6 +161,22 @@ ul.product-tags li {
   padding: 10px;
 }
 
+.italic-text {
+  font-style: italic;
+}
+
+.regular-price {
+  display: inline-block;
+  text-decoration:line-through;
+  margin-right: 15px;
+}
+
+.sale-price {
+  color: #fff;
+  text-shadow: 1px 1px #000000;
+  display: inline-block;
+}
+
 .centered-text {
   text-align: center;
 }
