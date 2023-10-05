@@ -3,8 +3,10 @@ export let productList = [
         id: 0,
         productName: "Men's Merrell Hiking Boots",
         price: 65.00,
+        sale: 55.00,
         brand: "Merrell",
         mainCategory: "Footwear",
+        description: "The number one choice of men's hiking boots. This comfortable boot will not only keep your feet feeling fresh, but are also designed with durability in mind to last you for years out in the rugged wilderness.",
         labels: [
             "footwear",
             "men's",
@@ -21,6 +23,7 @@ export let productList = [
         price: 65.00,
         brand: "Merrell",
         mainCategory: "Footwear",
+        description: "The top choice among female hikers. Orthopedic soles keep the arch high, preventing the aches and pains from long hikes.",
         labels: [
             "footwear",
             "women's",
@@ -59,7 +62,6 @@ export let productList = [
             "purifier",
             "water",
             "outdoors"
-        ],
-        colors: "clear"
+        ]
     },
 ]

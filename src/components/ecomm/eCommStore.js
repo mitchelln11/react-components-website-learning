@@ -30,7 +30,7 @@ const reducer = (state, action) => {
                 checkedCount: [...state.checkedCount].filter((count) => count !== action.payload),
             };
         default:
-            throw new Error("What the fudge u trying to do?");
+            throw new Error("What are you trying to do?");
     }
 }
 
@@ -50,13 +50,13 @@ export function StoreSection() {
     return (
         <div id="product-store">
             <aside>
-            <h3>Filters</h3>
-            <GenerateFieldSet ChecklistTitle="Brands">
-                <DisplayAllChecklistItems prodVal="brand" isChecked={state.isChecked} onChange={handleOnChange} />
-            </GenerateFieldSet>
-            <GenerateFieldSet ChecklistTitle="Categories">
-                <DisplayAllChecklistItems prodVal="mainCategory" isChecked={state.isChecked} onChange={handleOnChange} />
-            </GenerateFieldSet>
+                <h3>Filters</h3>
+                <GenerateFieldSet ChecklistTitle="Brands">
+                    <DisplayAllChecklistItems prodVal="brand" isChecked={state.isChecked} onChange={handleOnChange} />
+                </GenerateFieldSet>
+                <GenerateFieldSet ChecklistTitle="Categories">
+                    <DisplayAllChecklistItems prodVal="mainCategory" isChecked={state.isChecked} onChange={handleOnChange} />
+                </GenerateFieldSet>
             </aside>
             <div id="product-gallery">
                 <ProductGallery checkedCount={state.checkedCount} />
