@@ -31,8 +31,6 @@ function ExistingProducts() {
                 }
                 <div className="additional-info"> 
                     {
-                        /* If price exists  */
-                        productList[id].price &&
                         /* If price AND sales price exist  */
                         productList[id].price && productList[id].sale ?
                         <div className='price-container'>

@@ -181,6 +181,36 @@ ul.product-tags li {
   text-align: center;
 }
 
+.modal {
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  margin: 15px;
+  min-height: 350px;
+  height: 90%;
+  background-color: #612f2f;
+  box-shadow: 1px 1px 15px 1px #1a1919;
+  padding: 15px;
+}
+
+.modal-btn {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #176175;
+  max-width: 125px;
+  width: auto;
+  cursor: pointer;
+}
+
+.inner-container {
+  border: 1px solid #000000;
+  height: 100%;
+}
+
 #error-page {
   text-align: center;
   padding: 20vh 5vw;
