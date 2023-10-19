@@ -24,10 +24,9 @@ function ExistingProducts() {
                 <img src={productList[id].image || placeholderImg} alt={productList[id].productName} />
             </div>
             <div className="product-info">
-                <h1>Product Page</h1>
                 {
                     productList[id].productName &&
-                    <h2>{productList[id].productName}</h2>
+                    <h1>{productList[id].productName}</h1>
                 }
                 <div className="additional-info"> 
                     {
@@ -54,6 +53,8 @@ function ExistingProducts() {
                         :
                         ""
                     }
+
+                    <div className="add-cart-btn secondary-color">Add to Cart</div>
                 </div>
             </div>
         </>

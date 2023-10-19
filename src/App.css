@@ -6,6 +6,10 @@
   background-color: #176175;
 }
 
+.secondary-color {
+  background-color: #588794;
+}
+
 .primary-font {
   color: #ffffff;
 }
@@ -231,6 +235,23 @@ ul.product-tags li {
   flex: 1;
   border-left: 1px solid #000000;
   padding: 10px;
+}
+
+.price-totals {
+  position: fixed;
+}
+
+.add-cart-btn {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 10px;
+  width: fit-content;
+  margin: 15px 0;
+}
+
+.add-cart-btn:hover {
+  background-color: #176175;
+  cursor: pointer; 
 }
 
 #error-page {
