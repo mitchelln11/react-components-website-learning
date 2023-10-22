@@ -181,20 +181,34 @@ ul.product-tags li {
   text-align: center;
 }
 
-.modal {
+.modalBackdrop {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.8);
   z-index: 2;
-  position: absolute;
+  position: fixed;
+  top: 0;
+}
+
+.modal {
+  z-index: 3;
+  position: fixed;
   left: 50%;
-  right: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 95%;
+  width: 70%;
   margin: 15px;
   min-height: 350px;
-  height: 90%;
+  height: 80%;
   background-color: #612f2f;
   box-shadow: 1px 1px 15px 1px #1a1919;
   padding: 15px;
+}
+
+.svg-inline--fa {
+  float: right;
+  margin: 15px 15px 0 0;
+  font-size: 25px;
 }
 
 .modal-btn {
@@ -203,6 +217,10 @@ ul.product-tags li {
   background-color: #176175;
   max-width: 125px;
   width: auto;
+  cursor: pointer;
+}
+
+.modalX {
   cursor: pointer;
 }
 

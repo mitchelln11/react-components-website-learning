@@ -1,23 +1,23 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ModalContext } from '../App';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export function ModalPopUp() {
     const [ revealModal, setRevealModal ] = useContext(ModalContext);
 
-    useEffect(() => {
-        console.log(revealModal)
-    })
-
-    function handleCloseModal () {
+    const handleCloseModal = () => {
         setRevealModal(false)
     }
 
-    if (revealModal === true) {
+    if (revealModal) {
         return (
-            <div className="modal">
-                <div className="inner-container">
-                    <h2>Modal Test</h2>
-                    <div className="modal-btn" onClick={handleCloseModal}>Test Close button</div>
+            <div className="modalBackdrop" onClick={handleCloseModal}>
+                <div className="modal" onClick={(e) => {e.stopPropagation()}}>
+                    <div className="inner-container">
+                        <FontAwesomeIcon icon={faXmark}  onClick={handleCloseModal} className="modalX" />
+                        <h2>Modal Test</h2>
+                    </div>
                 </div>
             </div>
         )
