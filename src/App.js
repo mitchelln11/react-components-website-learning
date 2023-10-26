@@ -5,7 +5,7 @@ import FormFill from './components/formFill';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" data-testid="app-container">
 
       {/* A static component that displays static text */}
       <h2>Historical Facts</h2>
