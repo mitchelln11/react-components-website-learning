@@ -2,7 +2,7 @@ import { useState } from "react";
 import { totalQuestions } from "../dataSamples/qas.js";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
-function HandlePanelInteraction({id, question, answer}) {
+export  function HandlePanelInteraction({id, question, answer}) {
     const [revealPanel, setRevealPanel] = useState(false);
 
     function panelClick() {
@@ -19,7 +19,7 @@ function HandlePanelInteraction({id, question, answer}) {
                     <h3 id={`accordionTitle${id}`} className="accordion-title">{question}</h3>
                 </div>
                 {
-                    revealPanel ? <div className="accordion-arrow"><FaAngleUp /></div> : <div className="accordion-arrow"><FaAngleDown /></div>
+                    revealPanel ? <div className="accordion-arrow" data-testid={`accordionIcon${id}`} role="button"><FaAngleUp /></div> : <div className="accordion-arrow" data-testid={`accordionIcon${id}`} role="button"><FaAngleDown /></div>
                 }
             </div>
             {/* Show panel only if revealPanel is true */}
