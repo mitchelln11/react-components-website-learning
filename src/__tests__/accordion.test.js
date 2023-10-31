@@ -23,7 +23,7 @@ describe('Accordion', () => {
     });
 
     // I think the accordion has to be opened first before seeing the answer in the test
-    test('Toggle elements render', async () => {
+    test('Toggle elements are in document', async () => {
         render(<HandlePanelInteraction 
             id="1"
             question='Where Did the term \"Black-Balled\" come from'
@@ -32,13 +32,7 @@ describe('Accordion', () => {
             setRevealPanel={mockRevealPanel}
             />
         );
-        // const question = container.secondChild
-        // const secondAnswer = screen.container.querySelector(`accordionAnswer${implementedVars.q2.id}`);
         const toggleElements = screen.getAllByRole('button');
-        // console.log(toggleElements)
-        // const secondToggle = toggleElements[1];
-        // const secondAnswer = screen.container.querySelector(`accordionAnswer${implementedVars.q2.id}`);
-        // fireEvent.click(secondToggle)
         expect(toggleElements).toBeInTheDocument;
     });
 
