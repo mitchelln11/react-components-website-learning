@@ -5,7 +5,7 @@ afterAll(() =>{
     cleanup();
 });
 
-describe('First Name placeholder exist', () => {
+describe('Placeholder text', () => {
 
     test('First Name placeholder renders', () => {
         render(<FormFill />);
