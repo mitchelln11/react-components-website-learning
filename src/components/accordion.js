@@ -2,7 +2,7 @@ import { useState } from "react";
 import { totalQuestions } from "../dataSamples/qas.js";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
-export  function HandlePanelInteraction({id, question, answer}) {
+export function HandlePanelInteraction({id, question, answer}) {
     const [revealPanel, setRevealPanel] = useState(false);
 
     function panelClick() {
