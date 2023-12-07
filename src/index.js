@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import './index.css';
 import Product from './components/ecomm/productDetails';
+import { CartItem } from './components/ecomm/Cart';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorBoundary from './pages/error-page';
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Routes>
       <Route path="/" element={<App />} errorElement=<ErrorBoundary /> />
       <Route path="/product/:id" element={<Product />} />
+      <Route path="/cart" element={<CartItem />} />
       <Route path="*" element={<ErrorBoundary />} />
     </Routes>
   </BrowserRouter>
