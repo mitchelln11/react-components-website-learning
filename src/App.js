@@ -4,6 +4,7 @@ import Accordion from './components/accordion';
 import { StoreSection } from './components/ecomm/eCommStore';
 import FormFill from './components/formFill';
 import { ModalPopUp, ModalBtn } from './components/ModalPopUp';
+import ShippingFields from './components/ecomm/shippingFields';
 
 export const ModalContext = createContext();
 
@@ -32,6 +33,8 @@ function App() {
         <h2>Contact Us</h2>
         <div id="form-fill">
           <FormFill />
+
+          <ShippingFields />
         </div>
       </div>
     </ModalContext.Provider>

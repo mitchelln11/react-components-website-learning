@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.parent-flex {
+  display: flex;
+}
+
+.child-flex-one {
+  flex: 1;
+  justify-content: space-between;
+}
+
 .primary-color {
   background-color: #176175;
 }
@@ -72,7 +81,7 @@
 #product-store {
   width: 100%;
   padding: 20px 0;
-  display:flex;
+  display: flex;
 }
 
 #product-store>aside {
@@ -132,6 +141,42 @@
 
 #form-fill {
   padding: 25px 0;
+  width: 65vw;
+  margin: 0 auto;
+}
+
+#shipping-street {
+  width: 100%
+}
+
+#shipping-form-container {
+  padding: 10px;
+}
+
+#shipping-form-container input {
+  padding: 10px;
+}
+
+#shipping-form-container select {
+  padding: 10px;
+}
+
+.drop-right-fill {
+  margin-right: -23px;
+}
+
+#shipping-form-container>input:first-child {
+  margin-bottom: 10px;
+}
+
+.spacer-right {
+  margin-right: 10px;
+}
+
+#cc-field {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
 }
 
 footer {
