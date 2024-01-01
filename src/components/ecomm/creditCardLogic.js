@@ -1,22 +1,26 @@
 import { useState, useRef } from "react";
 import { formatCreditCard, getCreditCardType } from "cleave-zen";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCcAmex, faCcDinersClub, faCcDiscover, faCcJcb, faCcMastercard, faCcVisa  } from "@fortawesome/free-brands-svg-icons";
 
-// export function parseCcForType(ccNum) {
-//     switch (true) {
-//         case ccNum.charAt(0) === "2":
-//             return "Mastercard"
-//         case ccNum.charAt(0) === "3":
-//             return "American Express"
-//         case ccNum.charAt(0) === "4":
-//             return "Visa"
-//         case ccNum.charAt(0) === "5":
-//             return "Mastercard"
-//         case (ccNum.charAt(0) === "6"):
-//             return "Discover"
-//         default: 
-//             return "No Credit Card Match"
-//     }
-// }
+export function getCcLogo(ccType) {
+    switch (true) {
+        case ccType === "amex":
+            return <FontAwesomeIcon icon={faCcAmex} />
+        case ccType === "diners":
+            return <FontAwesomeIcon icon={faCcDinersClub} />
+        case ccType === "discover":
+            return <FontAwesomeIcon icon={faCcDiscover} />
+        case ccType === "jcb":
+            return <FontAwesomeIcon icon={faCcJcb} />
+        case ccType === "mastercard":
+            return <FontAwesomeIcon icon={faCcMastercard} />
+        case ccType === "visa":
+            return <FontAwesomeIcon icon={faCcVisa} />
+        default: 
+            return ""
+    }
+}
 
 export default function CcLogic({fieldId}) {
     const inputRef = useRef(null)
@@ -26,6 +30,8 @@ export default function CcLogic({fieldId}) {
     const handleCcChange = (event) => {
         const value = event.target.value;
         setCcValue(formatCreditCard(value));
+
+        // Figures out Type of CC, returns text format (MC, Visa, etc)
         setCctype(getCreditCardType(value));
     }
     
@@ -35,6 +41,7 @@ export default function CcLogic({fieldId}) {
                 ref={inputRef}
                 value={ccValue}
                 id={fieldId} 
+                className="child-flex-one spacer-right"
                 name={fieldId} 
                 onChange={handleCcChange} 
                 maxlength="19" 
@@ -43,7 +50,8 @@ export default function CcLogic({fieldId}) {
                 pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" 
                 placeholder="Ex: 4502783790218767" 
             />
-            <div>type: {ccType} </div>
+            {/* Converts text version type to FortAwesome icon via switch statement */}
+            <div className="cc-fa-logo">{getCcLogo(ccType)}</div>
         </>
     )   
 }

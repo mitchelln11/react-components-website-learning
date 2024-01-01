@@ -165,7 +165,8 @@
   margin-right: -23px;
 }
 
-#shipping-form-container>input:first-child {
+#shipping-form-container input,
+#shipping-form-container select {
   margin-bottom: 10px;
 }
 
@@ -276,6 +277,14 @@ ul.product-tags li {
   float: right;
   margin: 15px 15px 0 0;
   font-size: 25px;
+}
+
+.cc-fa-logo {
+  margin-top: -16px;
+}
+
+.cc-fa-logo>.svg-inline--fa {
+  font-size: 42px;
 }
 
 .modal-btn {

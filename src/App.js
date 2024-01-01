@@ -2,7 +2,7 @@ import './App.css';
 import { createContext, useState } from 'react';
 import Accordion from './components/accordion';
 import { StoreSection } from './components/ecomm/eCommStore';
-import FormFill from './components/formFill';
+// import FormFill from './components/formFill';
 import { ModalPopUp, ModalBtn } from './components/ModalPopUp';
 import ShippingFields from './components/ecomm/shippingFields';
 
@@ -32,7 +32,7 @@ function App() {
         </div>
         <h2>Contact Us</h2>
         <div id="form-fill">
-          <FormFill />
+          {/* <FormFill /> */}
 
           <ShippingFields />
         </div>

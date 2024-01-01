@@ -11,8 +11,10 @@ export default function ShippingFields() {
                     <StateDropdown />
                 </select>
             </div>
-            <input type="text" className="child-flex-one" placeholder="Zipcode" />
-            <CcLogic fieldId="cc-field" />
+            <div className="parent-flex">
+                <input type="text" className="child-flex-one spacer-right" placeholder="Zipcode" />
+                <CcLogic fieldId="cc-field" />
+            </div>
         </form>
     )
 }
