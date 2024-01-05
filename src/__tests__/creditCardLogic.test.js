@@ -1,7 +1,10 @@
-import {expect, test} from '@jest/globals';
-import { getCcLogo } from '../components/ecomm/creditCardLogic';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faCcAmex, faCcDinersClub, faCcDiscover, faCcJcb, faCcMastercard, faCcVisa  } from "@fortawesome/free-brands-svg-icons";
+/**
+ * @jest-environment jsdom
+ */
+import { expect, test } from '@jest/globals';
+import { screen, render, fireEvent, findByRole } from '@testing-library/react'
+import CcLogic, { getCcLogo } from '../components/ecomm/creditCardLogic';
+import '@testing-library/jest-dom'
 
 describe('creditCardLogic', () => {
     describe('getCcLogo', () => {
@@ -38,6 +41,22 @@ describe('creditCardLogic', () => {
         test('returns Visa Fontawesome Icon', () => {
             const ccVal = getCcLogo("visa");
             expect(ccVal).toMatchSnapshot();
+        })
+    })
+
+    describe('CcLogic', () => {
+        test('input displays in component', () => {
+            render(<CcLogic fieldId={"cc-field"} />)
+            const input = screen.getByPlaceholderText('Ex: 4502783790218767')
+            expect(input).toBeInTheDocument()
+        })
+
+        test('input displays in component', async () => {
+            const { container } = render(<CcLogic fieldId={"cc-field"} />)
+            const input = screen.getByPlaceholderText('Ex: 4502783790218767')
+            fireEvent.change(input, {target: {value: '25'}})
+            const svgIcon = container.querySelector('.fa-cc-mastercard')
+            expect(svgIcon).toBeInTheDocument()
         })
     })
 })
