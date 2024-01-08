@@ -45,13 +45,7 @@ describe('creditCardLogic', () => {
     })
 
     describe('CcLogic', () => {
-        test('input displays in component', () => {
-            render(<CcLogic fieldId={"cc-field"} />)
-            const input = screen.getByPlaceholderText('Ex: 4502783790218767')
-            expect(input).toBeInTheDocument()
-        })
-
-        test('input displays in component', async () => {
+        test('mastercard logo displays if typing 25', async () => {
             const { container } = render(<CcLogic fieldId={"cc-field"} />)
             const input = screen.getByPlaceholderText('Ex: 4502783790218767')
             fireEvent.change(input, {target: {value: '25'}})
