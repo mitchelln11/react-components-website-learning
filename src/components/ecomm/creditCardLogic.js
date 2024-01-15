@@ -44,9 +44,9 @@ export default function CcLogic({fieldId}) {
                 className="child-flex-one spacer-right"
                 name={fieldId} 
                 onChange={handleCcChange} 
-                maxlength="19" 
+                maxLength="19" 
                 type="text" 
-                inputmode="numeric" 
+                inputMode="numeric" 
                 pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" 
                 placeholder="Ex: 4502783790218767" 
             />

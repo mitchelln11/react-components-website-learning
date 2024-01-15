@@ -1,8 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { expect, test } from '@jest/globals';
-import { screen, render, fireEvent, findByRole } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import CcLogic, { getCcLogo } from '../components/ecomm/creditCardLogic';
 import '@testing-library/jest-dom'
 
@@ -45,12 +44,24 @@ describe('creditCardLogic', () => {
     })
 
     describe('CcLogic', () => {
-        test('mastercard logo displays if typing 25', async () => {
-            const { container } = render(<CcLogic fieldId={"cc-field"} />)
-            const input = screen.getByPlaceholderText('Ex: 4502783790218767')
+
+        // <svg
+        //     aria-hidden="true"
+        //     class="svg-inline--fa fa-cc-mastercard "
+        //     data-icon="cc-mastercard"
+        //     data-prefix="fab"
+        //     focusable="false"
+        //     role="img"
+        //     viewBox="0 0 576 512"
+        //     xmlns="http://www.w3.org/2000/svg"
+        // >
+
+        test('SVG logo renders', async () => {
+            render(<CcLogic fieldId={"cc-field"} />)
+            const input = await screen.findByPlaceholderText('Ex: 4502783790218767')
             fireEvent.change(input, {target: {value: '25'}})
-            const svgIcon = container.querySelector('.fa-cc-mastercard')
-            expect(svgIcon).toBeInTheDocument()
+            const svgIcon = await screen.findByDisplayValue('25')
+            expect(svgIcon.hasAttribute('data-icon', 'cc-mastercard'))
         })
     })
 })
