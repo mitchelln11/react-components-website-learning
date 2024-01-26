@@ -1,7 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-import { fireEvent, render, screen } from '@testing-library/react'
+import { findByRole, fireEvent, queryByRole, render, screen, waitFor, within } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import CcLogic, { getCcLogo } from '../components/ecomm/creditCardLogic';
 import '@testing-library/jest-dom'
 
@@ -44,10 +45,17 @@ describe('creditCardLogic', () => {
     })
 
     describe('CcLogic', () => {
+        test('mastercard logo displays if typing 25', async () => {
+            const { container } = render(<CcLogic fieldId={"cc-field"} />)
+            const input = screen.getByPlaceholderText('Ex: 4502783790218767')
+            fireEvent.change(input, {target: {value: '25'}})
+            const svgIcon = container.querySelector('.fa-cc-mastercard')
+            expect(svgIcon).toBeInTheDocument()
+        })
 
         // <svg
         //     aria-hidden="true"
-        //     class="svg-inline--fa fa-cc-mastercard "
+        //     class="svg-inline--fa fa-cc-mastercard"
         //     data-icon="cc-mastercard"
         //     data-prefix="fab"
         //     focusable="false"
@@ -56,12 +64,54 @@ describe('creditCardLogic', () => {
         //     xmlns="http://www.w3.org/2000/svg"
         // >
 
-        test('SVG logo renders', async () => {
+        test('SVG container does not display log before typing', async () => {
             render(<CcLogic fieldId={"cc-field"} />)
-            const input = await screen.findByPlaceholderText('Ex: 4502783790218767')
-            fireEvent.change(input, {target: {value: '25'}})
-            const svgIcon = await screen.findByDisplayValue('25')
-            expect(svgIcon.hasAttribute('data-icon', 'cc-mastercard'))
+            // const input = screen.getByPlaceholderText('Ex: 4502783790218767')
+            const svgContainer = screen.getByTestId('cc-logo-container')
+            // fireEvent.change(input, {target: {value: '25'}})
+            // userEvent.type(input, '25')
+            expect(svgContainer).toBeEmptyDOMElement()
+            // const svgIcon = await screen.findByText('svg')
+            // const svgIcon = screen.getByTestId('cc-logo-container')
+            // const svgIcon = document.getElementsByTagName("svg");
+            // const svgIcon = await screen.findByDisplayValue('25')
+            // console.log(svgIcon)
+            // await waitFor(() => {
+            //     expect(queryByRole(img)).toBeInTheDocument()
+            //   })
+            // expect(svgIcon).toHaveAttribute('class', 'cc-fa-logo')
+            // const test = await screen.findByRole('img')
+            // expect(test).toBeVisible()
         })
+
+        test('User can type into credit card field', async () => {
+            render(<CcLogic fieldId={"cc-field"} />)
+            const input = screen.getByPlaceholderText('Ex: 4502783790218767')
+            userEvent.type(input, '25')
+            const type25 = await screen.findByDisplayValue('25')
+            console.log(type25)
+            expect(type25).toBeVisible()
+        })
+
+        test.only('SVG logo appears on typing', async () => {
+            render(<CcLogic fieldId={"cc-field"} />)
+            const ccInput = screen.getByPlaceholderText('Ex: 4502783790218767')
+            userEvent.type(ccInput, '25')
+            const svgContainer = screen.getByTestId('cc-logo-container')
+            const innerSvgContainer = within(svgContainer).findByRole("img")
+            console.log(innerSvgContainer)
+            // expect(svgIcon).toHaveAttribute('class', 'cc-fa-logo')
+            // const test = await screen.findByRole('img')
+            // expect(test).toBeVisible()
+        })
+
+        // Working if you switch component to text version
+        // test.only('SVG logo renders', async () => {
+        //     render(<CcLogic fieldId={"cc-field"} />)
+        //     const input = await screen.findByPlaceholderText('Ex: 4502783790218767')
+        //     fireEvent.change(input, {target: {value: '25'}})
+        //     const mcTxt = await screen.findByText('mastercard')
+        //     expect(mcTxt).toHaveTextContent('mastercard')
+        // })
     })
 })

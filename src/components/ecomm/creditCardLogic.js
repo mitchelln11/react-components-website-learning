@@ -51,7 +51,11 @@ export default function CcLogic({fieldId}) {
                 placeholder="Ex: 4502783790218767" 
             />
             {/* Converts text version type to FortAwesome icon via switch statement */}
+            {/* Working version !!!! Do not delete below */}
             <div className="cc-fa-logo" data-testid="cc-logo-container">{getCcLogo(ccType)}</div>
+
+            {/* Testing text version in order to get test working */}
+            {/* <div className="cc-fa-logo" data-testid="cc-logo-container">{ccType}</div> */}
         </>
     )   
 }
