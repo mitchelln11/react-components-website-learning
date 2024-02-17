@@ -10,6 +10,7 @@ export const ModalContext = createContext();
 
 function App() {
   const [revealModal, setRevealModal] = useState(false);
+  
   return (
     <ModalContext.Provider value={[revealModal, setRevealModal]}>
       <ModalPopUp />
@@ -28,6 +29,7 @@ function App() {
         <div id="yt-vids">
           <h2>Youtube Videos</h2>
           <p>The below button opens a modal. The state of being open or not is utilizing the <i>useContext</i> API built into React.</p>
+          
           <ModalBtn />
         </div>
         <h2>Contact Us</h2>
