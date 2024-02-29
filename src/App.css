@@ -78,6 +78,10 @@
   padding: 30px 15px;
 }
 
+.accordion-answer {
+  cursor: default;
+}
+
 #product-store {
   width: 100%;
   padding: 20px 0;

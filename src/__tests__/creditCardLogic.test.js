@@ -89,21 +89,36 @@ describe('creditCardLogic', () => {
             const input = screen.getByPlaceholderText('Ex: 4502783790218767')
             userEvent.type(input, '25')
             const type25 = await screen.findByDisplayValue('25')
-            console.log(type25)
             expect(type25).toBeVisible()
         })
 
-        test.only('SVG logo appears on typing', async () => {
-            render(<CcLogic fieldId={"cc-field"} />)
-            const ccInput = screen.getByPlaceholderText('Ex: 4502783790218767')
-            userEvent.type(ccInput, '25')
-            const svgContainer = screen.getByTestId('cc-logo-container')
-            const innerSvgContainer = within(svgContainer).findByRole("img")
-            console.log(innerSvgContainer)
-            // expect(svgIcon).toHaveAttribute('class', 'cc-fa-logo')
-            // const test = await screen.findByRole('img')
-            // expect(test).toBeVisible()
-        })
+        // test.only('SVG logo appears on typing', async () => {
+
+        //     const mocksetCcValue = jest.fn();
+        //     const mocksetCctype = jest.fn();
+        //     const mockGetCcLogo = jest.fn();
+
+        //     render(<CcLogic fieldId={"cc-field"} />)
+        //     const ccInput = screen.getByPlaceholderText('Ex: 4502783790218767')
+        //     userEvent.type(ccInput, '25')
+            
+        //     // Maybe mock function that gets text version
+        //     mocksetCcValue()
+        //     mocksetCctype()
+            
+        //     // const svgContainer = screen.getByTestId('cc-logo-container')
+        //     mockGetCcLogo()
+        //     // console.log(svgContainer)
+        //     const svgIcon = await screen.findAllByRole(waitFor('img'))
+        //     console.log(svgIcon)
+        //     // const innerSvgContainer = within(svgContainer).findByRole("img")
+        //     // console.log(innerSvgContainer)
+        //     // expect(svgIcon).toHaveAttribute('class', 'cc-fa-logo')
+        //     // const mcLogo = await screen.findAllByDisplayValue
+        //     // console.log(mcLogo)
+        //     // const test = await screen.findByRole('img')
+        //     expect(svgIcon).toBeVisible()
+        // })
 
         // Working if you switch component to text version
         // test.only('SVG logo renders', async () => {
