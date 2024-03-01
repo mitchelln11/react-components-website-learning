@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { HandlePanelInteraction } from '../components/accordion';
+import Accordion, { HandlePanelInteraction } from '../components/accordion';
 
 describe('Accordion', () => {
     const implementedVars = {
@@ -14,7 +14,7 @@ describe('Accordion', () => {
         expect(secondQuestion).toBeInTheDocument();
     });
 
-    test('Toggle elements are in document', async () => {
+    test('Toggle elements are in document', () => {
         render(<HandlePanelInteraction {...implementedVars} />);
         const toggleElements = screen.getAllByRole('button');
         expect(toggleElements).toBeInTheDocument;
@@ -28,4 +28,10 @@ describe('Accordion', () => {
         const secondAnswer = await screen.findByTestId('accordionAnswer1');
         expect(secondAnswer).toHaveTextContent('black-balled')
     });
+
+    test('Multiple quesitons and anwsers display via mapping function', () => {
+        render(<Accordion />);
+        const allArrows = screen.getAllByTestId(/accordionIcon/)
+        expect(allArrows).toHaveLength(3)
+    })
 })
