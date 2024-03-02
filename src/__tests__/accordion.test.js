@@ -23,7 +23,6 @@ describe('Accordion', () => {
     test('Answer displays after clicking toggle', async () => {
         render(<HandlePanelInteraction {...implementedVars} />);
         const secondToggleElement = screen.getByTestId('accordionIcon1');
-        expect(secondToggleElement).toBeInTheDocument();
         fireEvent.click(secondToggleElement)
         const secondAnswer = await screen.findByTestId('accordionAnswer1');
         expect(secondAnswer).toHaveTextContent('black-balled')

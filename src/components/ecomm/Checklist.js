@@ -15,7 +15,6 @@ export const eCommValues = {
 // Properly returning checked boxes and condensing to the id alone
 export function findCheckedCheckboxes() {
     let checkboxesFound = Array.from(document.querySelectorAll("input:checked")).map(check => check.id)
-    console.log(checkboxesFound);
     return checkboxesFound;
 }
 
