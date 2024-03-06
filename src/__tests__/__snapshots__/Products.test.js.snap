@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplaySingleProduct Single product headers display 1`] = `
+Array [
+  <h3>
+    Roof Rack
+  </h3>,
+  <h4>
+    $
+    115.00
+  </h4>,
+]
+`;

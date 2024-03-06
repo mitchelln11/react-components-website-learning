@@ -3,7 +3,7 @@ import placeholderImg from '../../images/product-placeholder.jpg';
 import { productList } from '../../dataSamples/eCommProducts';
 import AddToCart from '../utils/addToCartBtn';
 
-function DisplaySingleProduct({id, productName, price, image}) {
+export function DisplaySingleProduct({id, productName, price, image}) {
     return (
         <div className="indiv-product">
             <Link to={`product/${id}`}>
