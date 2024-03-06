@@ -26,14 +26,14 @@ export default function AddToCart(prodId) {
                 }
             ]
         );
-        console.log(productAdded);
+        // console.log(productAdded);
     }
 
     // Figure out why the cart isn't actually updating
     // Add sidebar cart that displays when there's at least one product
-    useEffect(() => {
-        console.log(addTocart);
-      });
+    // useEffect(() => {
+    //     console.log(addTocart);
+    //   });
 
     return (
         <button onClick={handleAddCartBtn}>Add to Cart</button>

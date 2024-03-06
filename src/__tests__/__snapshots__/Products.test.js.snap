@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DisplaySingleProduct Single product headers display 1`] = `
+exports[`DisplaySingleProduct Product headers display 1`] = `
 Array [
   <h3>
     Roof Rack
