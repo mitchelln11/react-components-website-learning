@@ -74,7 +74,7 @@ export default function Product() {
                 <footer>
                     <h2>Tags</h2>
                     <ul className="product-tags">
-                        <TagList productLabels={productList[id].labels} />
+                        <TagList productLabels={productList[id].labels} role={list} />
                     </ul>
                 </footer>
             }
