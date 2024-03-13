@@ -84,7 +84,7 @@ export default function Product() {
         return ( 
             <ProductContainer>
                 <div className="product-info">
-                    <h1 class="centered-text">Product Page</h1>
+                    <h1 className="centered-text">Product Page</h1>
                     <ErrorBoundary /> 
                 </div>
             </ProductContainer>
