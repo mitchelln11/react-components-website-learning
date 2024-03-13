@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { productList } from "../../dataSamples/eCommProducts";
 
 export default function AddToCart(prodId) {
