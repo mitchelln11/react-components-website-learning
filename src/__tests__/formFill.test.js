@@ -1,11 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import FormFill from '../components/formFill';
 
-afterAll(() =>{
-    cleanup();
-});
-
-describe('Placeholder text', () => {
+describe('FormFill', () => {
 
     test('First Name placeholder renders', () => {
         render(<FormFill />);
