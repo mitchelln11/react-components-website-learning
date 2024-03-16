@@ -13,13 +13,14 @@ export const eCommValues = {
 }
 
 // Properly returning checked boxes and condensing to the id alone
-export function findCheckedCheckboxes() {
-    let checkboxesFound = Array.from(document.querySelectorAll("input:checked")).map(check => check.id)
-    return checkboxesFound;
-}
+// NOT IN USE
+// export function findCheckedCheckboxes() {
+//     let checkboxesFound = Array.from(document.querySelectorAll("input:checked")).map(check => check.id)
+//     return checkboxesFound;
+// }
 
 // Generate individual checkbox item input
-function GenerateCheckListItem({brand, isChecked, onChange}) {
+export function GenerateCheckListItem({brand, isChecked, onChange}) {
     
     return (
         <div className="checkbox-item">

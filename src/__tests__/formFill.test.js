@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import FormFill from '../components/formFill';
 
 describe('FormFill', () => {
