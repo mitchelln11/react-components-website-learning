@@ -21,7 +21,9 @@ describe('Product', ()=> {
             </MemoryRouter>
         );
         // The text matches header text from the product with the matching ID
-        const tagsHeader = screen.getByText('Natural Walking Stick')
+        const tagsHeader = screen.getByText('Natural Walking Stick');
+        const imgRole = screen.getByRole('img');
         expect(tagsHeader).toBeInTheDocument();
+        expect(imgRole).toBeInTheDocument();
     })
 })
